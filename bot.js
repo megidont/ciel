@@ -404,7 +404,8 @@ bot.on('messageReactionAdd', async function(messageReaction, user){
 
 				messageReaction.message.guild.roles.fetch(role).then(role => member.roles.add(role)).catch(error => console.error);
 
-				messageReaction.message.channel.send("Added role.");
+//				messageReaction.message.channel.send("Added role.");
+				user.send("Added role.");
 
 			}
 
@@ -439,7 +440,8 @@ bot.on('messageReactionRemove', async function(messageReaction, user){
 
 				member.roles.remove(messageReaction.message.guild.roles.fetch(role)).catch(error => console.error);
 
-				messageReaction.message.channel.send("Removed role.");
+//				messageReaction.message.channel.send("Removed role.");
+				user.send("Removed role.");
 
 			}
 
