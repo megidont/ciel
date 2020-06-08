@@ -204,6 +204,22 @@ bot.on('message', function(message){
 
 			var idCandidate = a.length > 2 ? (a[2].match(/\d\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?/) == null? [ null, null, null ] : a[2].match(/\d\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?/)) : [ null, null, null ];
 
+			if(!perms.has("MANAGE_CHANNELS") || !perms.has("MANAGE_ROLES")){
+
+				if(ciel == true){
+
+					message.channel.send("<@" + message.author.id + ">, you do not have permission to manage channels or roles in this server.");
+
+				}else{
+
+					message.channel.send("<@" + message.author.id + ">, it doesn't look like you're allowed to do that!");
+
+				}
+
+				return;
+
+			}
+
 			checkCompatible(message,idCandidate).then(result => {
 
 				if(a.length != 3){
@@ -267,6 +283,23 @@ bot.on('message', function(message){
 			}).catch(console.error);
 
 		}else if(a[1] == "setrole"){
+
+			if(!perms.has("MANAGE_CHANNELS") || !perms.has("MANAGE_ROLES")){
+
+				if(ciel == true){
+
+					message.channel.send("<@" + message.author.id + ">, you do not have permission to manage channels or roles in this server.");
+
+				}else{
+
+					message.channel.send("<@" + message.author.id + ">, it doesn't look like you're allowed to do that!");
+
+				}
+
+				return;
+
+			}
+
 			if(typeof servers[message.guild.id] === undefined){
 				if(ciel == true){
 					mess = "<@" + message.author.id + ">, please ensure you have set the role message.";
