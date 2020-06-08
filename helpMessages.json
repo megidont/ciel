@@ -1,0 +1,44 @@
+{
+	"ciel":{
+		"color":2722466,
+		"title":"Setting Up",
+		"description":"I can help you manage roles in your server with a few simple commands.",
+		"fields":{
+			"field1":{
+				"name":"Preliminary setup:",
+				"description":"Please choose a message to be watched for reactions. Once you have chosen your message, copy the message ID and save it for later. (You may need to enable Discord's developer mode to copy the ID.)"
+			},
+			"field2":{
+				"name":"usemessage",
+				"description":"Use \"@Ciel usemessage [Message ID]\" to specify the message to be watched. (e.x. @Ciel usemessage 719500275836125214)"
+			},
+			"field3":{
+				"name":"setrole",
+				"description":"Use \"@Ciel setrole\" and then mention a role and specify the emoji to be used. (e.x. @Ciel setrole @they/them 🤙)"
+			},
+			"field4":{
+				"name":"Use:",
+				"description":"Once all roles have been set up, simply adding or removing a reaction should be sufficient to add or remove the role. Please be advised that if you intend to change the emoji for a role, the previous emoji will be removed, but the role will not be removed from people who have been given it."
+			}
+		}
+	},
+	"penny":{
+		"color":8921753,
+		"title":"Troubled Waters",
+		"description":"Troubled Waters",
+		"fields":{
+			"field1":{
+				"name":"Troubled Waters",
+				"description":"Troubled Waters"
+			},
+			"field2":{
+				"name":"Troubled Waters",
+				"description":"Troubled Waters"
+			},
+			"field3":{
+				"name":"Troubled Waters",
+				"description":"Troubled Waters"
+			}
+		}
+	}
+}
