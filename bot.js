@@ -253,7 +253,7 @@ bot.on('message', function(message){
 
 						if(result == true){
 
-							if(typeof servers[message.guild.id] === undefined){ createServerJson(message.guild); }
+							if(typeof servers[message.guild.id] === 'undefined'){ createServerJson(message.guild); }
 							servers[message.guild.id].roleMessage = idCandidate[0];
 							servers[message.guild.id].roleMessageChannel = evilGlobal;
 							saveServers();
@@ -300,13 +300,13 @@ bot.on('message', function(message){
 
 			}
 
-			if(typeof servers[message.guild.id] === undefined){
+			if(typeof servers[message.guild.id] === 'undefined'){
 				if(ciel == true){
 					mess = "<@" + message.author.id + ">, please ensure you have set the role message.";
 				}else{
 					mess = "<@" + message.author.id + ">, please make sure to set the role message first!";
 				}
-			}else if(servers[message.guild.id].roleMessage == null || typeof servers[message.guild.id].rolemessage === undefined){
+			}else if(servers[message.guild.id].roleMessage == null || typeof servers[message.guild.id].rolemessage === 'undefined'){
 				if(ciel == true){
 					mess = "<@" + message.author.id + ">, please ensure you have set the role message.";
 				}else{
@@ -337,7 +337,7 @@ bot.on('message', function(message){
 							prevRole = prevRole.match(/\d\d\d\d\d\d\d\d\d\d\d?\d?\d?\d?\d?\d?\d?\d?\d?\d?/)[0];
 						}
 					}
-					if(typeof servers[message.guild.id].roles[roleIdCandidate] !== undefined && servers[message.guild.id].roles[roleIdCandidate] != null){
+					if(typeof servers[message.guild.id].roles[roleIdCandidate] !== 'undefined' && servers[message.guild.id].roles[roleIdCandidate] != null){
 						message.guild.channels.cache.get(servers[message.guild.id].roleMessageChannel).messages.fetch({around: servers[message.guild.id].roleMessage, limit: 1}).then(messages => {
 
 							messages.first().reactions.resolve(prevRole).remove();
