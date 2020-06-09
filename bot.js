@@ -306,7 +306,8 @@ bot.on('message', function(message){
 				}else{
 					mess = "<@" + message.author.id + ">, please make sure to set the role message first!";
 				}
-			}else if(servers[message.guild.id].roleMessage == null || typeof servers[message.guild.id].rolemessage === 'undefined'){
+			}else if(servers[message.guild.id].roleMessage == null || typeof servers[message.guild.id].roleMessage === 'undefined'){
+				console.log(typeof servers[message.guild.id].roleMessage);
 				if(ciel == true){
 					mess = "<@" + message.author.id + ">, please ensure you have set the role message.";
 				}else{
@@ -353,9 +354,9 @@ bot.on('message', function(message){
 						message.guild.channels.cache.get(servers[message.guild.id].roleMessageChannel).messages.fetch({around: servers[message.guild.id].roleMessage, limit: 1}).then(messages => messages.first().react(servers[message.guild.id].roles[roleIdCandidate]).catch(error => {console.error; reacted = false;})).catch(error => {console.error; reacted = false;});
 					}
 					if(ciel == true){
-						mess = "<@" + message.author.id + ">, we will try to use " + servers[message.guild.id].roles[roleIdCandidate] + " for that role. Please be advised that checking if it is an emoji is unfeasible right now.";
+						mess = "<@" + message.author.id + ">, we will try to use " + servers[message.guild.id].roles[roleIdCandidate] + " for that role. Please be advised that checking if it is an emoji is unfeasible right now, and if you do not see the emoji in this message then you must use a different emoji.";
 					}else{
-						mess = "<@" + message.author.id + ">, I'll try use " + servers[message.guild.id].roles[roleIdCandidate] + " for that role! Please be advised that I cannot check for sure if that is an emoji right now!";
+						mess = "<@" + message.author.id + ">, I'll try use " + servers[message.guild.id].roles[roleIdCandidate] + " for that role! Please be advised that I cannot check for sure if that is an emoji right now, so if you do not see it in this message you need to set a new one!";
 					}
 					saveServers();
 				}else{
