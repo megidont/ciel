@@ -419,6 +419,7 @@ bot.on('messageReactionAdd', async function(messageReaction, user){
 
 	if(messageReaction.message.id == servers[messageReaction.message.guild.id].roleMessage && user.bot != true){
 
+		if(typeof servers[messageReaction.message.guild.id] === 'undefined'){ return; }
 		var member = await messageReaction.message.guild.members.fetch(user);
 		var emoji;
 
@@ -436,10 +437,12 @@ bot.on('messageReactionAdd', async function(messageReaction, user){
 
 			if(servers[messageReaction.message.guild.id].roles[role] == emoji){
 
-				messageReaction.message.guild.roles.fetch(role).then(role => member.roles.add(role)).catch(error => console.error);
+				messageReaction.message.guild.roles.fetch(role).then(guildRole => {
 
-//				messageReaction.message.channel.send("Added role.");
-				user.send("Added role.");
+					member.roles.add(guildRole);
+					user.send("Added role. " + messageReaction.emoji.toString());
+
+				}).catch(error => {console.log(error); user.send("Failed to add role. Please ask a moderator for help."); });
 
 			}
 
@@ -455,6 +458,7 @@ bot.on('messageReactionRemove', async function(messageReaction, user){
 
 	if(messageReaction.message.id == servers[messageReaction.message.guild.id].roleMessage && user.bot != true){
 
+		if(typeof servers[messageReaction.message.guild.id] === 'undefined'){ return; }
 		var member = await messageReaction.message.guild.members.fetch(user);
 		var emoji;
 
@@ -472,10 +476,12 @@ bot.on('messageReactionRemove', async function(messageReaction, user){
 
 			if(servers[messageReaction.message.guild.id].roles[role] == emoji){
 
-				member.roles.remove(messageReaction.message.guild.roles.fetch(role)).catch(error => console.error);
+				messageReaction.message.guild.roles.fetch(role).then(guildRole => {
 
-//				messageReaction.message.channel.send("Removed role.");
-				user.send("Removed role.");
+					member.roles.remove(guildRole);
+					user.send("Removed role." + messageReaction.emoji.toString());
+
+				}).catch(error => {console.log(error); user.send("Failed to remove role. Please ask a moderator for help."); });
 
 			}
 
